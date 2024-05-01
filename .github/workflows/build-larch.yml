@@ -29,5 +29,10 @@ jobs:
           mkdir build
           cd build
           cmake -DCMAKE_BUILD_TYPE=Debug ..
+          make -j20
           ln -s ../data
+      - name: Run tests
+        run: |
+          source ~/miniconda/etc/profile.d/conda.sh
+          conda activate larch-dev
           ./larch-test -tag slow
