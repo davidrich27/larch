@@ -22,13 +22,17 @@ jobs:
         run: |
           source ~/miniconda/etc/profile.d/conda.sh
           conda env create -f environment.yml
-      - name: Build
+      - name: Build (cmake step)
         run: |
           source ~/miniconda/etc/profile.d/conda.sh
           conda activate larch-dev
           mkdir build
           cd build
           cmake -DCMAKE_BUILD_TYPE=Debug ..
+      - name: Build (make step)
+          source ~/miniconda/etc/profile.d/conda.sh
+          conda activate larch-dev
+          cd build
           make -j20
           ln -s ../data
       - name: Run tests
