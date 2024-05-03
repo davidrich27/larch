@@ -28,7 +28,7 @@ jobs:
           conda activate larch-dev
           mkdir build
           cd build
-          export CMAKE_NUM_JOBS="16"
+          export CMAKE_NUM_THREADS="8"
           cmake -DCMAKE_BUILD_TYPE=Debug ..
       - name: Build (make step)
         run: |

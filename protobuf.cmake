@@ -3,6 +3,10 @@ include(FetchContent)
 set(Protobuf_USE_STATIC_LIBS ON)
 cmake_policy(SET CMP0026 OLD)
 
+if(NOT DEFINED CMAKE_NUM_JOBS)
+  set(CMAKE_NUM_THREADS "16")
+endif()
+
 FetchContent_Declare(
   protocolbuffers_protobuf
   GIT_REPOSITORY https://github.com/protocolbuffers/protobuf.git
