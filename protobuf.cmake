@@ -3,8 +3,8 @@ include(FetchContent)
 set(Protobuf_USE_STATIC_LIBS ON)
 cmake_policy(SET CMP0026 OLD)
 
-if(NOT DEFINED NUM_JOBS)
-  set(NUM_JOBS "8")
+if(NOT DEFINED CMAKE_NUM_JOBS)
+  set(CMAKE_NUM_JOBS "16")
 endif()
 
 FetchContent_Declare(
@@ -33,7 +33,7 @@ endif()
 
 message(STATUS "Building protobuf ...")
 execute_process(
-  COMMAND ${CMAKE_COMMAND} --build . --parallel ${NUM_JOBS}
+  COMMAND ${CMAKE_COMMAND} --build . --parallel ${CMAKE_NUM_JOBS}
   RESULT_VARIABLE result
   WORKING_DIRECTORY ${Protobuf_ROOT})
 
