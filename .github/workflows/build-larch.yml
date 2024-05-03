@@ -28,6 +28,7 @@ jobs:
           conda activate larch-dev
           mkdir build
           cd build
+          export CMAKE_NUM_JOBS="16"
           cmake -DCMAKE_BUILD_TYPE=Debug ..
       - name: Build (make step)
         run: |
@@ -40,4 +41,5 @@ jobs:
         run: |
           source ~/miniconda/etc/profile.d/conda.sh
           conda activate larch-dev
+          cd build
           ./larch-test -tag slow
