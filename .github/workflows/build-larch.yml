@@ -35,7 +35,7 @@ jobs:
           source ~/miniconda/etc/profile.d/conda.sh
           conda activate larch-dev
           cd build
-          make -j20
+          make -j8
           ln -s ../data
       - name: Run tests
         run: |
