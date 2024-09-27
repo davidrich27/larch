@@ -33,7 +33,7 @@ jobs:
         env:
           ANACONDA_USER: ${{ vars.ANACONDA_USER }}
           ANACONDA_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
-          ANACONDA_FLAGS: ${{ vars.ANACONDA_FLAGS }} 
+          ANACONDA_FLAGS: ${{ vars.ANACONDA_FLAGS }}
           INCLUDE_LARCH_TEST: ${{ vars.INCLUDE_LARCH_TEST }}
           RUN_LARCH_TEST: ${{ vars.RUN_LARCH_TEST }}
           UPLOAD_TO_ANACONDA: ${{ vars.UPLOAD_TO_ANACONDA }}

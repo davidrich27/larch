@@ -38,8 +38,10 @@ requirements:
 
     - cmake =3.19.6
     - make
-    - openmpi-mpicc 
-    - openmpi-mpicxx 
+    - openmpi
+    - openmpi-mpicc
+    - openmpi-mpicxx
+    - boost-cpp =1.76
     - automake
     - autoconf
     - libtool
