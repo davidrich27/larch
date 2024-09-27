@@ -1,11 +1,13 @@
-{% set name = "larch-phylo" %}
+{% set name = "larch" %}
+{% set package_name = "larch-phylo" %}
 {% set src = environ.get('LARCH_SRC', 'local') %}
 {% set git_commit = environ.get('LARCH_COMMIT', 'main') %}
 {% set version = environ.get('LARCH_VERSION', '0.1.0') %}
 {% set hash = environ.get('LARCH_HASH', 'f09851e89217b688c9b012da0161cadbc88b5692a9c823b44b83c2c129a5762d') %}
+{% set include_tests = environ.get('INCLUDE_LARCH_TEST', 'false') %}
 
 package:
-  name: {{ name }}
+  name: {{ package_name }}
   version: {{ version }}
 
 source:
@@ -19,7 +21,7 @@ source:
   git_submodules: true
   {% elif src == 'release' %}
   # method 3: use release tarball
-  url: https://github.com/matsengrp/{{ name }}/archive/v{{ version }}.tar.gz
+  url: https://github.com/matsengrp/{{ name }}/releases/download/v{{ version }}/{{ name }}-v{{ version }}.tar.gz
   sha256: {{ hash }}
   {% endif %}
 
@@ -30,6 +32,7 @@ build:
 requirements:
   build:
     - python
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
 
@@ -43,19 +46,23 @@ requirements:
     - autoconf
     - libtool
     - yasm
-    - ucx
-    - zlib
+    
+    - openmpi 
+    - boost-cpp =1.76
+    - ucx >=1.16.0
+    - zlib >=1.2.11
 
   run:
-    - openmpi
+    - openmpi 
     - boost-cpp =1.76
-    - ucx
-    - zlib
+    - ucx >=1.16.0
+    - zlib >=1.2.11
 
 test:
   commands:
     - larch-usher --version
-    - ls -lsh
+    - larch-dagutil --version
+    - larch-dag2dot --version
 
 about:
   home: https://github.com/matsengrp/larch
