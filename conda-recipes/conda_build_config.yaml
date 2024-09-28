@@ -15,6 +15,10 @@
 # zlib:
 #   - 1.2.11
 
+channel_priority: strict
 channels:
   - conda-forge
   - defaults
+
+# solver: libmamba
+solver: classic
