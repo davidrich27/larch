@@ -28,6 +28,3 @@ if [[ ${LARCH_RUN_TEST} == true ]]; then
 fi
 
 make install
-
-mkdir -p ${PREFIX}/lib
-cp $(find . -name *.so*) ${PREFIX}/lib
