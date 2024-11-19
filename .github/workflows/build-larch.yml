@@ -59,6 +59,6 @@ jobs:
         run: |
           source ~/miniconda/etc/profile.d/conda.sh
           conda activate larch-dev
-          cd build
-          ln -s ../data
+          cd build/bin
+          ln -s ../../data
           ./larch-test ${LARCH_TEST_FLAGS}
