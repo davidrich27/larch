@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
       - name: Prepare build environment
@@ -34,16 +34,16 @@ jobs:
           ANACONDA_USER: ${{ vars.ANACONDA_USER }}
           ANACONDA_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
           ANACONDA_FLAGS: ${{ vars.ANACONDA_FLAGS }} 
-          INCLUDE_LARCH_TEST: ${{ vars.INCLUDE_LARCH_TEST }}
-          RUN_LARCH_TEST: ${{ vars.RUN_LARCH_TEST }}
-          UPLOAD_TO_ANACONDA: ${{ vars.UPLOAD_TO_ANACONDA }}
+          LARCH_INCLUDE_TEST: ${{ vars.LARCH_INCLUDE_TEST }}
+          LARCH_RUN_TEST: ${{ vars.LARCH_RUN_TEST }}
+          UPLOAD_TO_ANACONDA_CLOUD: ${{ vars.UPLOAD_TO_ANACONDA_CLOUD }}
         run: |
           source ~/miniconda/etc/profile.d/conda.sh
           conda activate larch-dev
           export LARCH_VERSION=$(cat ./VERSION)
-          export INCLUDE_LARCH_TEST=${INCLUDE_LARCH_TEST}
-          export RUN_LARCH_TEST=${RUN_LARCH_TEST}
-          if [[ ${UPLOAD_TO_ANACONDA} == true ]]; then
+          export LARCH_INCLUDE_TEST=${LARCH_INCLUDE_TEST}
+          export LARCH_RUN_TEST=${LARCH_RUN_TEST}
+          if [[ ${UPLOAD_TO_ANACONDA_CLOUD} == true ]]; then
             conda build . --user ${ANACONDA_USER} --token ${ANACONDA_TOKEN} ${ANACONDA_FLAGS}
           else
             conda build . 
