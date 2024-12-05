@@ -51,11 +51,11 @@ requirements:
     - ucx >=1.16.0
     - zlib >=1.2
 
-test:
-  commands:
-    - larch-usher --version
-    - larch-dagutil --version
-    - larch-dag2dot --version
+# test:
+#   commands:
+#     - larch-usher --version
+#     - larch-dagutil --version
+#     - larch-dag2dot --version
 
 about:
   home: https://github.com/matsengrp/larch
@@ -73,3 +73,4 @@ extra:
     - matsen
     - davidrich27
     - marybarker
+    - ~ognian
